@@ -63,8 +63,7 @@ class Raw(BaseFormat):
                 fi_completed = file_info.completed
 
             for im_info in fi_images:
-                #verified = verify_sha256(im_info.hash, chapter_path / im_info.name)
-                verified = true
+                verified = verify_sha256(im_info.hash, chapter_path / im_info.name)
                 if not verified:
                     failed_images.append(im_info)
                 
