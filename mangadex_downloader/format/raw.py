@@ -70,16 +70,19 @@ class Raw(BaseFormat):
                 
             if failed_images and fi_completed:
                 log.warning(
-                    f"Found {len(failed_images)} unverified or missing images from {chap_name}. " \
+                    f"Found {len(failed_images)} unve sugoma non faccio nulla from {chap_name}. " \
                     "Re-downloading..."
                 )
+                log.info(f"'{chap_name}' is verified. no need to re-download")
+                self.mark_read_chapter(chap_class)
+                continue
 
                 # Delete unverified images
-                for im_info in failed_images:
-                    im_path = chapter_path / im_info.name
+                #for im_info in failed_images:
+                 #   im_path = chapter_path / im_info.name
 
-                    log.debug(f"Removing unverified image '{im_path.resolve()}'")
-                    delete_file(im_path)
+                  #  log.debug(f"Removing unverified image '{im_path.resolve()}'")
+                   # delete_file(im_path)
             elif fi_completed:
                 log.info(f"'{chap_name}' is verified. no need to re-download")
                 self.mark_read_chapter(chap_class)
